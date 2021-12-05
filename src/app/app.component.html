@@ -1,0 +1,37 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item"  [appClass]="{disabled:currentPage===0}">
+      <a (click)="currentPage=currentPage-1" class="page-link"> Previous</a></li>  <!-- replacing class Names-->
+    <!-- <ng-container *ngFor="let img of images; let i=index"> -->
+      <ng-container *appTimes="images.length; let i=index">
+    <li class="page-item"
+    
+    [appClass]="{active:i===currentPage}"
+      *ngIf="checkIndex(i)"
+    >
+      <a (click)="currentPage=i" class="page-link">{{i+1}}</a>
+    </li>
+  </ng-container>
+    <li class="page-item" [appClass]="{disabled:currentPage===images.length-1}" ><a (click)="currentPage=currentPage+1" class="page-link">Next</a></li>
+
+</ul>
+</nav>
+<!-- notice the string inside " " -->
+<!-- <div appClass [backgroundColor]=" 'blue' "> -->
+  <div>
+<h4  [appClass]=" 'yellow' ">{{images[currentPage].title}}</h4>
+<img [src]="images[currentPage].url">
+</div>
+
+
+<!-- ng switch case -->
+<!-- <div [ngSwitch]="currentPage">
+<div *ngSwitchCase="0">Page 0</div>
+<div *ngSwitchCase="1">Page 1</div>
+<div *ngSwitchCase="2">Page 2</div>
+<div *ngSwitchDefault>Unknown Page</div>
+</div> -->
+
+<ul *appTimes="5">
+<li>Items</li>
+</ul>
